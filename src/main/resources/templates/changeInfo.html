@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1" />
+<title>Change participant info</title>
+</head>
+<body>
+	<h1>
+		Cambiar la contrasena del usuario <span
+			th:text="${session.citizen.nombre}" />
+	</h1>
+	<form method="POST" action="changeInfo">
+		<table>
+			<tr>
+				<td>Contrasena:</td>
+				<td><input type="password" name="password" required="required"
+					placeholder="Contrasena" /></td>
+			</tr>
+			<tr>
+				<td>Nueva contrasena:</td>
+				<td><input type="password" name="newPassword"
+					required="required" placeholder="Nueva contrasena" /></td>
+			</tr>
+			<tr>
+				<td><input type="submit" name="updateInfo"
+					value="Actualizar contrasena" /></td>
+				<td><input id="btnReset" type="reset" value="Reset" /></td>
+			</tr>
+			<tr>
+				<td><a href="/">Volver a inicio</a></td>
+
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

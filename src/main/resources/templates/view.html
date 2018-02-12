@@ -1,0 +1,46 @@
+<html>
+<head>
+    <title>Spring MVC Form Handling</title>
+</head>
+<body>
+
+<h2>Tu informacion: </h2>
+<form method="POST" action="changeEmail">
+		<table>
+			<tr>
+				<td>Email:</td>
+				<td><input type="text" name="email" required="required"
+					 th:value="${session.citizen.email}" th:placeholder = "${session.citizen.email}"/></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" name="updateEmial"
+					value="Actualizar email" /></td>
+			</tr>
+		</table>
+	</form>
+   <table>
+    <tr>
+        <td>Nombre: </td>
+        <td><span th:text="${session.citizen.nombre}"/></td>
+    </tr>
+    <tr>
+        <td>Apellidos: </td>
+        <td><span th:text="${session.citizen.apellidos}"/></td>
+    </tr>
+    <tr>
+    	<td>Direccion: </td>
+    	<td><span th:text="${session.citizen.direccionPostal}"/></td>
+    </tr>
+    <tr>
+    	<td>Nacionalidad: </td>
+    	<td><span th:text="${session.citizen.nacionalidad}"/></td>
+    </tr>
+    <tr>
+    	<td><a href="changeInfo">Modificar datos</a></td>
+    	<td> <a href="/">Volver a inicio</a></td>
+    </tr>
+</table>  
+<br/>
+<i><span th:if="${resultado != null}" th:text="${resultado}">Resultado</span></i>
+</body>
+</html>
