@@ -3,7 +3,7 @@
 [![codecov](https://codecov.io/gh/Arquisoft/participants2a/branch/master/graph/badge.svg)](https://codecov.io/gh/Arquisoft/participants2a)
 
 
-# participants2a
+# Agents2a
 
 [![Join the chat at https://gitter.im/Arquisoft/participants2a](https://badges.gitter.im/Arquisoft/participants2a.svg)](https://gitter.im/Arquisoft/participants2a?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
@@ -18,7 +18,7 @@ Skeleton of participants module
 - Sonia Gestal Huelga (@sonia94)
 - Luis Irazusta Lorenzo (@Fuegon)
 
-# Previous Authors
+# Actual Authors
 
 - Jose Emilio Labra Gayo (@labra)
 - Jesus García Minas (@jesusgarciaminas)
