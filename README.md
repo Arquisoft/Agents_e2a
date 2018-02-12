@@ -9,7 +9,7 @@
 
 Skeleton of participants module
 
-# Authors
+# Previous Authors
 
 - Herminio García González (@herminiogg)
 - Jose Emilio Labra Gayo (@labra)
@@ -17,6 +17,13 @@ Skeleton of participants module
 - Rubén García Ruiz (@RubenGarciaR)
 - Sonia Gestal Huelga (@sonia94)
 - Luis Irazusta Lorenzo (@Fuegon)
+
+# Previous Authors
+
+- Jose Emilio Labra Gayo (@labra)
+- Jesus García Minas (@jesusgarciaminas)
+- Pelayo García Torre (@Pelayo-Torre)
+- José Antonio García García (@MrKarrter)
 
 # Funcionamiento:
 ## Interfaz HTML
