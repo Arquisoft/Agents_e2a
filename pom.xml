@@ -4,8 +4,8 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>es.uniovi.asw</groupId>
-	<artifactId>participants2a</artifactId>
-	<name>participants2a</name>
+	<artifactId>agents_e2a</artifactId>
+	<name>agents_e2a</name>
 	<version>0.0.1</version>
 
 	<parent>
