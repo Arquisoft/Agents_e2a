@@ -11,7 +11,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
-
+//Esto es una prueba
 /**
  * @since 0.0.1
  */
@@ -27,7 +27,7 @@ public class CitizenDAODummy implements CitizenDAO {
     }
 
     @Override
-    public Citizen getParticipant(String login, String password) {
+    public Citizen getAgent(String login, String password) {
     	@SuppressWarnings("unchecked")
 		List<Citizen> citizen =  entityManager.createQuery(
     	        "from Citizen where nombreUsuario = ?1 and contraseña = ?2")

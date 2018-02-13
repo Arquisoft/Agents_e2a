@@ -83,7 +83,7 @@ public class CitizenControllerTest {
             }
         };
 
-        Citizen c = citizenDAO.getParticipant("juan", "1234");
+        Citizen c = citizenDAO.getAgent("juan", "1234");
         mockMvc.perform(post("/user")
                 .content(this.json(payload))
                 .contentType(JSONContentType))
@@ -162,7 +162,7 @@ public class CitizenControllerTest {
             }
         };
 
-        Citizen c = citizenDAO.getParticipant("juan", "1234");
+        Citizen c = citizenDAO.getAgent("juan", "1234");
         mockMvc.perform(post("/user")
                 .content(this.json(payload))
                 .contentType(JSONContentType)

@@ -24,9 +24,9 @@ public class DBTest {
 	
 	@Test
     public void getExistingCitizen() throws Exception {
-    	Citizen c1 = citizenDAO.getParticipant("juan", "1234");
-    	Citizen c2 = citizenDAO.getParticipant("pedro", "1234");
-    	Citizen c3 = citizenDAO.getParticipant("raul", "1234");
+    	Citizen c1 = citizenDAO.getAgent("juan", "1234");
+    	Citizen c2 = citizenDAO.getAgent("pedro", "1234");
+    	Citizen c3 = citizenDAO.getAgent("raul", "1234");
 
 		assertEquals("juan", c1.getNombreUsuario());
 		assertEquals("1234", c1.getContraseña());
@@ -40,9 +40,9 @@ public class DBTest {
     
     @Test
     public void getNonExistingCitizen() throws Exception {
-    	Citizen c1 = citizenDAO.getParticipant("antonio", "1234");
-    	Citizen c2 = citizenDAO.getParticipant("daniel", "1234");
-    	Citizen c3 = citizenDAO.getParticipant("rodrigo", "1234");
+    	Citizen c1 = citizenDAO.getAgent("antonio", "1234");
+    	Citizen c2 = citizenDAO.getAgent("daniel", "1234");
+    	Citizen c3 = citizenDAO.getAgent("rodrigo", "1234");
 
     	assertNull(c1);
     	assertNull(c2);
@@ -53,9 +53,9 @@ public class DBTest {
     @Test
     public void wrongPasswordTest() throws Exception {
     	
-    	Citizen c1 = citizenDAO.getParticipant("juan", "password");
-    	Citizen c2 = citizenDAO.getParticipant("pedro", "password");
-    	Citizen c3 = citizenDAO.getParticipant("raul", "password");
+    	Citizen c1 = citizenDAO.getAgent("juan", "password");
+    	Citizen c2 = citizenDAO.getAgent("pedro", "password");
+    	Citizen c3 = citizenDAO.getAgent("raul", "password");
     	
     	assertNull(c1);
     	assertNull(c2);
@@ -65,9 +65,9 @@ public class DBTest {
     @Test
     public void wrongUserPasswordTest() throws Exception {
     	
-    	Citizen c1 = citizenDAO.getParticipant("juan@gmail.com", "password");
-    	Citizen c2 = citizenDAO.getParticipant("pedro@gmail.com", "password");
-    	Citizen c3 = citizenDAO.getParticipant("raul@gmail.com", "password");
+    	Citizen c1 = citizenDAO.getAgent("juan@gmail.com", "password");
+    	Citizen c2 = citizenDAO.getAgent("pedro@gmail.com", "password");
+    	Citizen c3 = citizenDAO.getAgent("raul@gmail.com", "password");
     	
     	assertNull(c1);
     	assertNull(c2);
@@ -77,7 +77,7 @@ public class DBTest {
     @Test
     public void updateTest() throws Exception {
     	
-    	Citizen c1 = citizenDAO.getParticipant("juan", "1234");
+    	Citizen c1 = citizenDAO.getAgent("juan", "1234");
     	
     	//Cambio de contraseña
     	c1.setContraseña("new password");
