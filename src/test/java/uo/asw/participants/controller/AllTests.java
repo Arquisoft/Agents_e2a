@@ -10,6 +10,7 @@ import org.junit.runners.Suite.SuiteClasses;
 	CitizenControllerTest.class,
 	DBTest.class,
 	UtilTest.class,
-	WebControllerTest.class
+	WebControllerTest.class,
+	CitizenTest.class
 })
 public class AllTests { }

@@ -70,7 +70,6 @@ public class UtilTest {
 		citizenMin.setLastName(apellidos);
 		citizenMin.setEdad(edad);
 		citizenMin.setEmail(email);
-
 	
 		assertEquals(id, citizenMin.getId());
 		assertEquals(nombre, citizenMin.getFirstName());
@@ -90,13 +89,13 @@ public class UtilTest {
 		String dateString1 = "10-02-1990";
 		Date date1 = sdf.parse(dateString1);
 		int edad1 = DateUtil.getYears(date1);
-		assertEquals(26, edad1);
+		assertEquals(27, edad1);
 
 		//Aun no ha cumplido años
 		String dateString2 = "10-08-1990";
 		Date date2 = sdf.parse(dateString2);
 		int edad2 = DateUtil.getYears(date2);
-		assertEquals(27, edad2);
+		assertEquals(28, edad2);
 	}
 	
 	@Test
@@ -104,6 +103,7 @@ public class UtilTest {
 		
 		assertTrue(Check.validateEmail("juan@gmail.com"));
 		assertTrue(Check.validateEmail("juan@uniovi.es"));
+		assertTrue(Check.validateEmail("juanAntonio@yahoo.es"));
 		
 		assertFalse(Check.validateEmail("usuario"));
 		assertFalse(Check.validateEmail("usuario@gmail"));
