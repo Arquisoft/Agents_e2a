@@ -84,7 +84,7 @@ public class CitizenControllerTest {
         };
 
         Citizen c = citizenDAO.getAgent("juan", "1234", "Person");
-        mockMvc.perform(post("/user")
+        mockMvc.perform(post("/info")
                 .content(this.json(payload))
                 .contentType(JSONContentType))
                 .andExpect(status().isOk())
@@ -106,7 +106,7 @@ public class CitizenControllerTest {
             }
         };
 
-        mockMvc.perform(post("/user")
+        mockMvc.perform(post("/info")
         		.content(new byte[0]) //Contenido vacio
                 .content(this.json(payload))
                 .contentType(JSONContentType))
@@ -126,7 +126,7 @@ public class CitizenControllerTest {
             }
         };
 
-        mockMvc.perform(post("/user")
+        mockMvc.perform(post("/info")
         		.content(new byte[0]) //Contenido vacio
                 .content(this.json(payload))
                 .contentType(JSONContentType))
@@ -145,7 +145,7 @@ public class CitizenControllerTest {
             }
         };
 
-        mockMvc.perform(post("/user")
+        mockMvc.perform(post("/info")
         		.content(new byte[0]) //Contenido vacio
                 .content(this.json(payload))
                 .contentType(JSONContentType))
