@@ -23,7 +23,7 @@ public class CitzenControllerImpl implements CitzenController {
 	private AgentsService agentsService;
 
 	@Override
-	@RequestMapping(value = "/user", method = RequestMethod.POST,
+	@RequestMapping(value = "/info", method = RequestMethod.POST,
 			consumes = MediaType.APPLICATION_JSON_VALUE,
 			produces = {MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<CitizenMin> getCitzen(@RequestBody Map<String, Object> payload) {
