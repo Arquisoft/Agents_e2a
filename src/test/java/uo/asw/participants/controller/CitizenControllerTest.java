@@ -30,7 +30,6 @@ import static org.junit.Assert.assertNotNull;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.xpath;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = Application.class)
@@ -80,6 +79,7 @@ public class CitizenControllerTest {
 			{
                 put("login", "juan");
                 put("password", "1234");
+                put("kind", "Person");
             }
         };
 
@@ -102,6 +102,7 @@ public class CitizenControllerTest {
 			{
                 put("login", "juanJUANjuan");
                 put("password", "1234");
+                put("kind", "Person");
             }
         };
 
@@ -121,6 +122,7 @@ public class CitizenControllerTest {
 			{
                 put("login", "juan");
                 put("password", "1234abcde");
+                put("kind", "Person");
             }
         };
 
@@ -148,28 +150,6 @@ public class CitizenControllerTest {
                 .content(this.json(payload))
                 .contentType(JSONContentType))
                 .andExpect(status().isNotFound());
-    }
-    
-    @Test
-    //Comprueba que el usuario se obtiene correctamente en formato XML
-    public void getUserXML() throws Exception {
-        Map<String, String> payload = new HashMap<String, String>() {
-			private static final long serialVersionUID = 1L;
-
-			{
-                put("login", "juan");
-                put("password", "1234");
-            }
-        };
-
-        Citizen c = citizenDAO.getAgent("juan", "1234", "Person");
-        mockMvc.perform(post("/user")
-                .content(this.json(payload))
-                .contentType(JSONContentType)
-                .accept(MediaType.APPLICATION_XML))
-                .andExpect(status().isOk())
-                .andExpect(xpath("//email").string(c.getEmail())
-                );
     }
 
     /**

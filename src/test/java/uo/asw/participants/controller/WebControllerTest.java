@@ -47,7 +47,8 @@ public class WebControllerTest {
 
       mockMvc.perform(post("/info")
 		.param("user", "juan")
-		.param("password", "1234"))
+		.param("password", "1234")
+		.param("kind", "Person"))
       	.andExpect(status().isOk())
       	.andExpect(model().attributeExists("resultado"))
       	.andExpect(view().name("view"));
@@ -61,7 +62,8 @@ public class WebControllerTest {
     	
         mockMvc.perform(post("/info")
     	.param("user", "usuario")
-		.param("password", "1234"))
+		.param("password", "1234")
+		.param("kind", "Person"))
      	.andExpect(view().name("error"));
 
     }
@@ -72,7 +74,8 @@ public class WebControllerTest {
 
        	mockMvc.perform(post("/info")
     	.param("user", "juan")
-		.param("password", "password"))
+		.param("password", "password")
+		.param("kind", "Person"))
      	.andExpect(view().name("error"));
    
     }
@@ -83,7 +86,8 @@ public class WebControllerTest {
 
        	mockMvc.perform(post("/info")
     	.param("user", "")
-		.param("password", ""))
+		.param("password", "")
+		.param("kind", "Person"))
         .andExpect(view().name("error"));
    
     }
