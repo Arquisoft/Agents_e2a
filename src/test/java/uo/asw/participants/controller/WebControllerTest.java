@@ -20,7 +20,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import uo.asw.Application;
 import uo.asw.dbManagement.CitizenDAO;
-import uo.asw.dbManagement.model.Citizen;
+import uo.asw.dbManagement.model.Agent;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -46,7 +46,7 @@ public class WebControllerTest {
     public void showInfoTest1() throws Exception {
 
       mockMvc.perform(post("/info")
-		.param("user", "juan")
+		.param("login", "juan")
 		.param("password", "1234")
 		.param("kind", "Person"))
       	.andExpect(status().isOk())
@@ -61,7 +61,7 @@ public class WebControllerTest {
     public void showInfoTest2() throws Exception {
     	
         mockMvc.perform(post("/info")
-    	.param("user", "usuario")
+    	.param("login", "usuario")
 		.param("password", "1234")
 		.param("kind", "Person"))
      	.andExpect(view().name("error"));
@@ -73,7 +73,7 @@ public class WebControllerTest {
     public void showInfoTest3() throws Exception {
 
        	mockMvc.perform(post("/info")
-    	.param("user", "juan")
+    	.param("login", "juan")
 		.param("password", "password")
 		.param("kind", "Person"))
      	.andExpect(view().name("error"));
@@ -85,7 +85,7 @@ public class WebControllerTest {
     public void showInfoTest4() throws Exception {
 
        	mockMvc.perform(post("/info")
-    	.param("user", "")
+    	.param("login", "")
 		.param("password", "")
 		.param("kind", "Person"))
         .andExpect(view().name("error"));
@@ -103,13 +103,13 @@ public class WebControllerTest {
    @Test
    public void changePasswordTest1() throws Exception {
    	
-	   Citizen c = citizenDAO.getAgent("juan", "1234", "Person");
+	   Agent c = citizenDAO.getAgent("juan", "1234", "Person");
 
 	   //Cambio de contraseña
        mockMvc.perform(post("/changeInfo")
     	.param("password", "1234")
 		.param("newPassword", "new")
-		.sessionAttr("citizen", c))
+		.sessionAttr("agent", c))
         .andExpect(status().isOk())
     	.andExpect(view().name("view"));
 
@@ -117,7 +117,7 @@ public class WebControllerTest {
        mockMvc.perform(post("/changeInfo")
     	.param("password", "new")
 		.param("newPassword", "1234")
-		.sessionAttr("citizen", c))
+		.sessionAttr("agent", c))
         .andExpect(status().isOk())
      	.andExpect(view().name("view"));
        
@@ -127,12 +127,12 @@ public class WebControllerTest {
    //Contraseña incorrecta
    public void changePasswordTest2() throws Exception {
    	
-	   Citizen c = citizenDAO.getAgent("juan", "1234", "Person");
+	   Agent c = citizenDAO.getAgent("juan", "1234", "Person");
 
        mockMvc.perform(post("/changeInfo")
     	.param("password", "password")
 		.param("newPassword", "new")
-		.sessionAttr("citizen", c))
+		.sessionAttr("agent", c))
     	.andExpect(view().name("errorContrasena"));
        
    }
@@ -140,12 +140,12 @@ public class WebControllerTest {
    @Test
    public void changeEmailTest1() throws Exception {
    	
-	   Citizen c = citizenDAO.getAgent("juan", "1234", "Person");
+	   Agent c = citizenDAO.getAgent("juan", "1234", "Person");
 
 	   //Cambio de email
        mockMvc.perform(post("/changeEmail")
     	.param("email", "juanNuevo@gmail.com")
-		.sessionAttr("citizen", c))
+		.sessionAttr("agent", c))
         .andExpect(status().isOk())
     	.andExpect(view().name("view"));
 
@@ -154,7 +154,7 @@ public class WebControllerTest {
 	   //Cambio de email de nuevo por el original
        mockMvc.perform(post("/changeEmail")
     	.param("email", "juan@gmail.com")
-		.sessionAttr("citizen", c))
+		.sessionAttr("agent", c))
         .andExpect(status().isOk())
      	.andExpect(view().name("view"));
        

@@ -1,11 +1,12 @@
 package uo.asw.dbManagement;
 
-import uo.asw.dbManagement.model.Citizen;
+import uo.asw.dbManagement.model.Agent;
 
 /**
  * @since 0.0.1
  */
 public interface CitizenDAO {
-    Citizen getAgent(String login, String password, String kind);
-    Citizen updateInfo(Citizen toUpdate);
+	Agent getAgent(String login, String password, String kind);
+
+	Agent updateInfo(Agent toUpdate);
 }

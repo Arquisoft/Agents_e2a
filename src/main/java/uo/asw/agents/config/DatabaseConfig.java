@@ -33,19 +33,19 @@ public class DatabaseConfig {
 	private LocalContainerEntityManagerFactoryBean entityManagerFactory;
 
 	/**
-	 * Crea una base de datos embebida, crea las tablas y carga los datos
+	 * Crea una base de datos embebida, crea las tablas y carga los datos No need
+	 * shutdown, EmbeddedDatabaseFactoryBean will take care of this
+	 * 
 	 * @return DataSource
 	 */
 	@Bean
 	public DataSource dataSource() {
-		
-		// no need shutdown, EmbeddedDatabaseFactoryBean will take care of this
 		EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
-		dataSource = builder.setType(EmbeddedDatabaseType.HSQL).addScript("db/sql/create-db.sql").addScript("db/sql/insert-data.sql").build();
+		dataSource = builder.setType(EmbeddedDatabaseType.HSQL).addScript("db/sql/create-db.sql")
+				.addScript("db/sql/insert-data.sql").build();
 		return dataSource;
-	
 	}
-	
+
 	/**
 	 * EntityManagerFactory para JPA, con la base de datos embebida
 	 */
@@ -56,8 +56,7 @@ public class DatabaseConfig {
 		entityManagerFactory.setDataSource(dataSource);
 
 		// Classpath scanning of @Component, @Service, etc annotated class
-		entityManagerFactory.setPackagesToScan(env
-				.getProperty("entitymanager.packagesToScan"));
+		entityManagerFactory.setPackagesToScan(env.getProperty("entitymanager.packagesToScan"));
 
 		// Vendor adapter
 		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
@@ -65,12 +64,9 @@ public class DatabaseConfig {
 
 		// Hibernate properties
 		Properties additionalProperties = new Properties();
-		additionalProperties.put("hibernate.dialect",
-				env.getProperty("hibernate.dialect"));
-		additionalProperties.put("hibernate.show_sql",
-				env.getProperty("hibernate.show_sql"));
-		additionalProperties.put("hibernate.hbm2ddl.auto",
-				env.getProperty("hibernate.hbm2ddl.auto"));
+		additionalProperties.put("hibernate.dialect", env.getProperty("hibernate.dialect"));
+		additionalProperties.put("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
+		additionalProperties.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
 		entityManagerFactory.setJpaProperties(additionalProperties);
 
 		return entityManagerFactory;
@@ -82,8 +78,7 @@ public class DatabaseConfig {
 	@Bean
 	public JpaTransactionManager transactionManager() {
 		JpaTransactionManager transactionManager = new JpaTransactionManager();
-		transactionManager.setEntityManagerFactory(entityManagerFactory
-				.getObject());
+		transactionManager.setEntityManagerFactory(entityManagerFactory.getObject());
 		return transactionManager;
 	}
 
@@ -94,6 +89,4 @@ public class DatabaseConfig {
 	public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
 		return new PersistenceExceptionTranslationPostProcessor();
 	}
-	
-
 }

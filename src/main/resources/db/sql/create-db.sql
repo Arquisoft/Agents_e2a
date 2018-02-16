@@ -9,8 +9,5 @@ CREATE TABLE citizen (
   dni VARCHAR(50),
   nombre VARCHAR(50),
   apellidos VARCHAR(50),
-  fechaNacimiento DATE,
   email VARCHAR(50),
-  direccionPostal VARCHAR(50),
-  nacionalidad VARCHAR(50)
 );
