@@ -25,16 +25,17 @@ public class CitzenControllerImpl implements CitzenController {
 	@Override
 	@RequestMapping(value = "/user", method = RequestMethod.POST,
 			consumes = MediaType.APPLICATION_JSON_VALUE,
-			produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+			produces = {MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<CitizenMin> getCitzen(@RequestBody Map<String, Object> payload) {
 		//if(!payload.keySet().containsAll(Arrays.asList("login", "password"))){
 		//	return new ResponseEntity<CitizenMin>(HttpStatus.BAD_REQUEST);
 		//}
 
-		String login, password;
+		String login, password, kind;
 		login = (String) payload.get("login");
 		password = (String) payload.get("password");
-		CitizenMin c = agentsService.getAgentsInfo(login, password);
+		kind = (String) payload.get("kind");
+		CitizenMin c = agentsService.getAgentsInfo(login, password, kind);
 		if(c == null){
 			return new ResponseEntity<CitizenMin>(HttpStatus.NOT_FOUND);
 		}

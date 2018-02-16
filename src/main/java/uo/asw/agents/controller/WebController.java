@@ -68,12 +68,12 @@ public class WebController {
 	 * @return view si exito, error si fracaso
 	 */
 	@RequestMapping(value = "/info", method = RequestMethod.POST)
-	public String showInfo(HttpSession session, @RequestParam String user, @RequestParam String password, Model model) {
+	public String showInfo(HttpSession session, @RequestParam String user, @RequestParam String password, @RequestParam String kind , Model model) {
 
 		Citizen c = null;
 
-		if (user != null && password != null) {
-			c = cc.getAgent(user, password);
+		if (user != null && password != null && kind != null) {
+			c = cc.getAgent(user, password, kind);
 			if (c != null) {
 				session.setAttribute("citizen", c);
 				model.addAttribute("resultado", "Bienvenid@ " + c.getNombre());

@@ -27,6 +27,10 @@ public class Citizen {
 	@NotNull
 	private String nombreUsuario;
 	@NotNull
+	private String kind;
+	@NotNull
+	private Long kindCode;
+	@NotNull
 	@Column(unique = true)
 	private String dni;
 	@NotNull
@@ -47,12 +51,14 @@ public class Citizen {
 	
 	
 
-	public Citizen(String contraseña, String nombreUsuario, String dni,
+	public Citizen(String contraseña, String nombreUsuario, String kind, long kindCode, String dni,
 			String nombre, String apellidos, Date fechaNacimiento,
 			String email, String direccionPostal, String nacionalidad) {
 		super();
 		this.contraseña = contraseña;
 		this.nombreUsuario = nombreUsuario;
+		this.kind = kind;
+		this.kindCode = kindCode;
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
@@ -136,15 +142,35 @@ public class Citizen {
 		return id;
 	}
 	
+	public String getKind() {
+		return kind;
+	}
+
+	public void setKind(String kind) {
+		this.kind = kind;
+	}
+
+	public Long getKindCode() {
+		return kindCode;
+	}
+
+	public void setKindCode(Long kindCode) {
+		this.kindCode = kindCode;
+	}	
 	
+
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((dni == null) ? 0 : dni.hashCode());
+		result = prime * result + ((contraseña == null) ? 0 : contraseña.hashCode());
+		result = prime * result + ((kind == null) ? 0 : kind.hashCode());
+		result = prime * result + ((nombreUsuario == null) ? 0 : nombreUsuario.hashCode());
 		return result;
 	}
+
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -155,22 +181,34 @@ public class Citizen {
 		if (getClass() != obj.getClass())
 			return false;
 		Citizen other = (Citizen) obj;
-		if (dni == null) {
-			if (other.dni != null)
+		if (contraseña == null) {
+			if (other.contraseña != null)
 				return false;
-		} else if (!dni.equals(other.dni))
+		} else if (!contraseña.equals(other.contraseña))
+			return false;
+		if (kind == null) {
+			if (other.kind != null)
+				return false;
+		} else if (!kind.equals(other.kind))
+			return false;
+		if (nombreUsuario == null) {
+			if (other.nombreUsuario != null)
+				return false;
+		} else if (!nombreUsuario.equals(other.nombreUsuario))
 			return false;
 		return true;
 	}
 
+
+
 	@Override
 	public String toString() {
-		return "Citizen [contraseña=" + contraseña + ", nombreUsuario="
-				+ nombreUsuario + ", dni=" + dni + ", nombre=" + nombre
-				+ ", apellidos=" + apellidos + ", fechaNacimiento="
-				+ fechaNacimiento + ", email=" + email + ", direccionPostal="
-				+ direccionPostal + ", nacionalidad=" + nacionalidad + "]";
+		return "Citizen [contraseña=" + contraseña + ", nombreUsuario=" + nombreUsuario + ", kind=" + kind
+				+ ", kindCode=" + kindCode + ", dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos
+				+ ", fechaNacimiento=" + fechaNacimiento + ", email=" + email + ", direccionPostal=" + direccionPostal
+				+ ", nacionalidad=" + nacionalidad + "]";
 	}
+
 	
 	
 

@@ -3,8 +3,6 @@ package uo.asw.participants.controller;
 import static org.junit.Assert.*;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -17,7 +15,6 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import uo.asw.Application;
 import uo.asw.agents.util.Check;
 import uo.asw.agents.util.CitizenMin;
-import uo.asw.agents.util.DateUtil;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -52,7 +49,7 @@ public class UtilTest {
 	
     @Before
     public void setUp() throws Exception {
-    	citizenMin = new CitizenMin("nombre", "apellido", new Date(), (long) 1, "usuario@gmail.com");
+    	citizenMin = new CitizenMin("nombre", "apellido", (long) 1, "usuario@gmail.com");
     }
 
 	@Test
@@ -61,20 +58,20 @@ public class UtilTest {
 		Long id = (long) 2;
 		String nombre = "fernando";
 		String apellidos = "sanchez";
-		Date fechaNacimiento = new Date();
-		int edad = DateUtil.getYears(fechaNacimiento);
+		//Date fechaNacimiento = new Date();
+		//int edad = DateUtil.getYears(fechaNacimiento);
 		String email = "fernando@gmail.com";
 
 		citizenMin.setId(id);
 		citizenMin.setFirstName(nombre);
 		citizenMin.setLastName(apellidos);
-		citizenMin.setEdad(edad);
+		//citizenMin.setEdad(edad);
 		citizenMin.setEmail(email);
 	
 		assertEquals(id, citizenMin.getId());
 		assertEquals(nombre, citizenMin.getFirstName());
 		assertEquals(apellidos, citizenMin.getLastName());
-		assertEquals(edad, citizenMin.getEdad());
+		//assertEquals(edad, citizenMin.getEdad());
 		assertEquals(email, citizenMin.getEmail());
 		
 	}
@@ -83,19 +80,19 @@ public class UtilTest {
 	@Test
 	public void dateUtilTest() throws ParseException {
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy");
+		//SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy");
 		
 		//Ya ha cumplido años
-		String dateString1 = "10-02-1990";
-		Date date1 = sdf.parse(dateString1);
-		int edad1 = DateUtil.getYears(date1);
-		assertEquals(27, edad1);
+		//String dateString1 = "10-02-1990";
+		//Date date1 = sdf.parse(dateString1);
+		//int edad1 = DateUtil.getYears(date1);
+		//assertEquals(27, edad1);
 
 		//Aun no ha cumplido años
-		String dateString2 = "10-08-1990";
-		Date date2 = sdf.parse(dateString2);
-		int edad2 = DateUtil.getYears(date2);
-		assertEquals(28, edad2);
+		//String dateString2 = "10-08-1990";
+		//Date date2 = sdf.parse(dateString2);
+		//int edad2 = DateUtil.getYears(date2);
+		//assertEquals(28, edad2);
 	}
 	
 	@Test

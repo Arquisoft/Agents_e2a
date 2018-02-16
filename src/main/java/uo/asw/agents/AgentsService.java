@@ -9,6 +9,6 @@ import uo.asw.dbManagement.model.Citizen;
  * @since 0.0.1
  */
 public interface AgentsService {
-    CitizenMin getAgentsInfo(String login, String password);
+    CitizenMin getAgentsInfo(String login, String password, String kind);
     Citizen changeInfo(Citizen updatedData);
 }

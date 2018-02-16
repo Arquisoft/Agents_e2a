@@ -23,15 +23,15 @@ public class CitizenDAODummy implements CitizenDAO {
     private EntityManager entityManager;
     
     static {
-        dummyCitizen = new Citizen("pass", "dummy", "123456", "Clara", "Oswald", new Date(), "clara@tardis.co.uk", "The Hyperspace", "Inglesa");
+        dummyCitizen = new Citizen("pass", "dummy", "Person", 1, "123456", "Clara", "Oswald", new Date(), "clara@tardis.co.uk", "The Hyperspace", "Inglesa");
     }
 
     @Override
-    public Citizen getAgent(String login, String password) {
+    public Citizen getAgent(String login, String password, String kind) {
     	@SuppressWarnings("unchecked")
 		List<Citizen> citizen =  entityManager.createQuery(
-    	        "from Citizen where nombreUsuario = ?1 and contraseña = ?2")
-    	        .setParameter(1, login).setParameter(2, password)
+    	        "from Citizen where nombreUsuario = ?1 and contraseña = ?2 and kind = ?3")
+    	        .setParameter(1, login).setParameter(2, password).setParameter(3, kind)
     	        .getResultList();
     	if(citizen.isEmpty())
     		return null;

@@ -35,7 +35,7 @@ public class CitizenTest {
 		String dateString1 = "10-02-1990";
 		Date date1 = sdf.parse(dateString1);
 		
-    	citizen = new Citizen("1234", "juanTorre", "12345678J", "Juan Antonio", "Vázquez", date1, "juan@gmail.com", "33962", "España");
+    	citizen = new Citizen("1234", "juanTorre", "Person", 1, "12345678J", "Juan Antonio", "Vázquez", date1, "juan@gmail.com", "33962", "España");
 		
 		assertTrue(citizen != null);
 		

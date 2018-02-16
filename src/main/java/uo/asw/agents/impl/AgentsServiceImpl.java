@@ -17,10 +17,10 @@ public class AgentsServiceImpl implements AgentsService {
     private CitizenDAO citizenDAO;
 
     @Override
-    public CitizenMin getAgentsInfo(String login, String password) {
-       Citizen c = citizenDAO.getAgent(login, password);
+    public CitizenMin getAgentsInfo(String login, String password, String kind) {
+       Citizen c = citizenDAO.getAgent(login, password, kind);
        if(c != null){
-    	   return new CitizenMin(c.getNombre(), c.getApellidos(), c.getFechaNacimiento(), c.getId(), c.getEmail());
+    	   return new CitizenMin(c.getNombre(), c.getApellidos(),  c.getId(), c.getEmail());
        }
        return null;
     }
