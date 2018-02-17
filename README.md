@@ -30,6 +30,7 @@ Agents e2a
 2. Proporcionar los datos de login para los usuarios disponibles:
  * Login: juan, pedro, raul
  * Password: 1234
+ * Kind: Person, Entity, Sensor (Respectivamente)
 3. Aparecerá la pantalla que muestra los datos del usuario
  * Se puede modificar el email (se comprueba si el email es valido)
  * Se puede ir a la pantalla de cambio de contraseña
@@ -38,13 +39,10 @@ Agents e2a
  * Escribir la nueva contraseña
 
 ## Servicio REST
-   El punto de entrada se encuentra en http://localhost:8080/user.
+   El punto de entrada se encuentra en http://localhost:8080/info.
    
    Acepta peticiones POST en formato JSON con el contenido:
-   ``{"login":"login_usuario", "password":"contraseña_usuario"}``
-   
-   Devuelve la informacion del usuario si las credenciales en formato 
-   JSON o XML segun se indique en la cabecera de la petición.
+   ``{"login":"login_usuario", "password":"contraseña_usuario", kind:"tipo_usuario"}``
    
    Si los datos no son correctos se devuelve un error HTTP 404.
    Si los parametros no son correctos se devuelve un codigo de error HTTP 406.
@@ -52,27 +50,14 @@ Agents e2a
 ### Formato de retorn JSON
    ```json
    {
-     "firstName": "nombre",
-     "lastName": "apellidos",
-     "edad": edad(int),
-     "id": id_usuario(long),
-     "email": "email",
-     "address": "direccion",
-     "nationality": "nacionalidad"
+      "id": id_usuario (long),
+      "name": "nombre_usuario",
+      "surname": "apellido_usuario",
+      "email": "email",
+      "kind": "tipo_usuario",
+      "kindCode": id_kind (long),
+      "location": "localizacion_usuario" (Location)
    }
    ```
-### Formato retorno XML
-   ```xml
-   <CitizenMin>
-       <firstName>nombre</firstName>
-       <lastName>apellidos</lastName>
-       <edad>edad</edad>
-       <id>id_usuario</id>
-       <email>email</email>
-       <address>direccion</address>
-       <nationality>nacionalidad</nationality>
-   </CitizenMin>
-   ```
-   
 
 
