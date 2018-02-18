@@ -1,6 +1,6 @@
---DROP TABLE citizen IF EXISTS;
+--DROP TABLE agent IF EXISTS;
 
-CREATE TABLE citizen (
+CREATE TABLE agent (
   id      BIGINT PRIMARY KEY,
   contrasena VARCHAR(30),
   nombreUsuario  VARCHAR(50),
