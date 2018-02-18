@@ -5,13 +5,13 @@ import org.springframework.stereotype.Service;
 
 import uo.asw.agents.AgentsService;
 import uo.asw.agents.util.AgentMin;
-import uo.asw.dbManagement.CitizenDAO;
+import uo.asw.dbManagement.AgentDAO;
 import uo.asw.dbManagement.model.Agent;
 
 @Service
 public class AgentsServiceImpl implements AgentsService {
     @Autowired
-    private CitizenDAO citizenDAO;
+    private AgentDAO citizenDAO;
 
     @Override
     public AgentMin getAgentsInfo(String login, String password, String kind) {

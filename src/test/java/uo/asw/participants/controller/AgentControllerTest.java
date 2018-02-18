@@ -16,7 +16,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import uo.asw.Application;
-import uo.asw.dbManagement.CitizenDAO;
+import uo.asw.dbManagement.AgentDAO;
 import uo.asw.dbManagement.model.Agent;
 
 import java.io.IOException;
@@ -61,7 +61,7 @@ public class AgentControllerTest {
 			MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));
 
 	@Autowired
-	private CitizenDAO citizenDAO;
+	private AgentDAO citizenDAO;
 
 	@Before
 	public void setUp() throws Exception {

@@ -19,7 +19,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import uo.asw.Application;
-import uo.asw.dbManagement.CitizenDAO;
+import uo.asw.dbManagement.AgentDAO;
 import uo.asw.dbManagement.model.Agent;
 
 
@@ -34,7 +34,7 @@ public class WebControllerTest {
     private MockMvc mockMvc;
     
     @Autowired
-    private CitizenDAO citizenDAO;
+    private AgentDAO citizenDAO;
      
     @Before
     public void init() {

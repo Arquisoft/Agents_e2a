@@ -1,7 +1,7 @@
 package uo.asw.dbManagement.impl;
 import org.springframework.stereotype.Repository;
 
-import uo.asw.dbManagement.CitizenDAO;
+import uo.asw.dbManagement.AgentDAO;
 import uo.asw.dbManagement.model.Agent;
 
 import java.util.List;
@@ -15,7 +15,7 @@ import javax.transaction.Transactional;
  */
 @Repository
 @Transactional
-public class AgentDAODummy implements CitizenDAO {
+public class AgentDAODummy implements AgentDAO {
 	private static Agent dummyAgent;
 
 	@PersistenceContext

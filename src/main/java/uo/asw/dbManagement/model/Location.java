@@ -23,7 +23,7 @@ public class Location {
 	private double longitud;
 	
 	@OneToOne
-	private Agent citizen;
+	private Agent agent;
 	
 	Location() {
 	}
@@ -54,7 +54,7 @@ public class Location {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((citizen == null) ? 0 : citizen.hashCode());
+		result = prime * result + ((agent == null) ? 0 : agent.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(latitud);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
@@ -72,10 +72,10 @@ public class Location {
 		if (getClass() != obj.getClass())
 			return false;
 		Location other = (Location) obj;
-		if (citizen == null) {
-			if (other.citizen != null)
+		if (agent == null) {
+			if (other.agent != null)
 				return false;
-		} else if (!citizen.equals(other.citizen))
+		} else if (!agent.equals(other.agent))
 			return false;
 		if (Double.doubleToLongBits(latitud) != Double.doubleToLongBits(other.latitud))
 			return false;
@@ -86,6 +86,6 @@ public class Location {
 
 	@Override
 	public String toString() {
-		return "Location [latitud=" + latitud + ", longitud=" + longitud + ", citizen=" + citizen + "]";
+		return "Location [latitud=" + latitud + ", longitud=" + longitud + ", citizen=" + agent + "]";
 	}
 }

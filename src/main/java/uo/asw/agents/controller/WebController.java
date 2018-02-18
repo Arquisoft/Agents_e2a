@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import uo.asw.agents.util.Check;
-import uo.asw.dbManagement.CitizenDAO;
+import uo.asw.dbManagement.AgentDAO;
 import uo.asw.dbManagement.model.Agent;
 
 @Controller
@@ -29,7 +29,7 @@ public class WebController {
 	}
 
 	@Autowired
-	private CitizenDAO cc;
+	private AgentDAO cc;
 
 	/**
 	 * Recibe los datos de login del usuario, busca si exite ese usuario y en caso
@@ -58,7 +58,6 @@ public class WebController {
 				return "view";
 			}
 		}
-		System.out.println(c);
 		return "error";
 
 	}
@@ -91,11 +90,7 @@ public class WebController {
 	public String changePassword(HttpSession session, @RequestParam String password, @RequestParam String newPassword,
 			Model model) {
 		Agent c = (Agent) session.getAttribute("agent");
-		System.out.println(c);
-		System.out.println(password);
-		System.out.println(newPassword);
 		if (c != null) {
-			System.out.print("Yo entro aqui");
 			if (c.getContraseña().equals(password) && !newPassword.isEmpty()) {
 				c.setContraseña(newPassword);
 				cc.updateInfo(c);
