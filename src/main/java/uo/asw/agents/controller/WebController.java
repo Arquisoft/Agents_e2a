@@ -91,7 +91,11 @@ public class WebController {
 	public String changePassword(HttpSession session, @RequestParam String password, @RequestParam String newPassword,
 			Model model) {
 		Agent c = (Agent) session.getAttribute("agent");
+		System.out.println(c);
+		System.out.println(password);
+		System.out.println(newPassword);
 		if (c != null) {
+			System.out.print("Yo entro aqui");
 			if (c.getContraseña().equals(password) && !newPassword.isEmpty()) {
 				c.setContraseña(newPassword);
 				cc.updateInfo(c);
