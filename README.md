@@ -42,7 +42,7 @@ Agents e2a
    El punto de entrada se encuentra en http://localhost:8080/info.
    
    Acepta peticiones POST en formato JSON con el contenido:
-   ``{"login":"login_usuario", "password":"contraseña_usuario", kind:"tipo_usuario"}``
+   ``{"login":"login_usuario", "password":"contraseña_usuario", "kind":"tipo_usuario"}``
    
    Si los datos no son correctos se devuelve un error HTTP 404.
    Si los parametros no son correctos se devuelve un codigo de error HTTP 406.
