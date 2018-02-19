@@ -5,8 +5,11 @@
 
 # Agents2a
 
+Acceso al repositorio común del grupo Inci_E2:
+https://github.com/Arquisoft/Inci_e2a
 
-Agents e2a
+Acceso al subgrupo encargado del Loader_E2:
+https://github.com/Arquisoft/loader_e2a
 
 # Previous Authors
 
