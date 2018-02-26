@@ -143,7 +143,6 @@ public class WebControllerTest {
 			fail("Los test no se han ejecutado correctamente");
 			e.printStackTrace();
 		}
-
 	}
 
 	@Test
@@ -163,5 +162,30 @@ public class WebControllerTest {
 
 		assertEquals("juan@gmail.com", c.getEmail());
 
+	}
+
+	@Test
+	public void changeEmailTest2() throws Exception {
+
+		Agent c = citizenDAO.getAgent("juan", "1234", "Person");
+
+		// Cambio de email
+		mockMvc.perform(post("/changeEmail").param("email", "juanNuevogmailcom").sessionAttr("agent", c))
+				.andExpect(status().isOk()).andExpect(
+						model().attribute("resultado", "El email no es valido, no actualizado a: juanNuevogmailcom"));
+
+		assertEquals("juan@gmail.com", c.getEmail()); // El email sigue siendo el antiguo
+
+	}
+
+	@Test
+	public void changeInfoTest() {
+		try {
+			Agent c = citizenDAO.getAgent("juan", "1234", "Person");
+			mockMvc.perform(get("/changeInfo").sessionAttr("agent", c)).andExpect(view().name("changeInfo"));
+		} catch (Exception e) {
+			fail("Los test no se han ejecutado correctamente");
+			e.printStackTrace();
+		}
 	}
 }
