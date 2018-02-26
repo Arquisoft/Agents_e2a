@@ -1,4 +1,4 @@
-package uo.asw.dbManagement.model;
+package uo.asw.dbmanagement.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -132,7 +132,6 @@ public class Agent {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((contraseña == null) ? 0 : contraseña.hashCode());
 		result = prime * result + ((kind == null) ? 0 : kind.hashCode());
 		result = prime * result + ((nombreUsuario == null) ? 0 : nombreUsuario.hashCode());
 		return result;
@@ -147,11 +146,6 @@ public class Agent {
 		if (getClass() != obj.getClass())
 			return false;
 		Agent other = (Agent) obj;
-		if (contraseña == null) {
-			if (other.contraseña != null)
-				return false;
-		} else if (!contraseña.equals(other.contraseña))
-			return false;
 		if (kind == null) {
 			if (other.kind != null)
 				return false;

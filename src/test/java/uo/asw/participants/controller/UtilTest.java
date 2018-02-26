@@ -12,7 +12,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import uo.asw.Application;
 import uo.asw.agents.util.Check;
-import uo.asw.dbManagement.model.Location;
+import uo.asw.dbmanagement.model.Location;
 import uo.asw.agents.util.AgentMin;
 
 @RunWith(SpringJUnit4ClassRunner.class)

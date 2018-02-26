@@ -9,8 +9,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import uo.asw.Application;
-import uo.asw.dbManagement.AgentDAO;
-import uo.asw.dbManagement.model.Agent;
+import uo.asw.dbmanagement.model.Agent;
+import uo.asw.dbmanagement.AgentDAO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = Application.class)

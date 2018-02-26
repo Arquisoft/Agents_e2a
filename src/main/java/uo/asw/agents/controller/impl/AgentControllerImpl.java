@@ -25,10 +25,9 @@ public class AgentControllerImpl implements AgentController {
 	@RequestMapping(value = "/info", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = {
 			MediaType.APPLICATION_JSON_VALUE })
 	public ResponseEntity<AgentMin> getAgent(@RequestBody Map<String, Object> payload) {
-		String login, password, kind;
-		login = (String) payload.get("login");
-		password = (String) payload.get("password");
-		kind = (String) payload.get("kind");
+		String login = (String) payload.get("login");
+		String password = (String) payload.get("password");
+		String kind = (String) payload.get("kind");
 		AgentMin c = agentsService.getAgentsInfo(login, password, kind);
 		if (c == null) {
 			return new ResponseEntity<AgentMin>(HttpStatus.NOT_FOUND);

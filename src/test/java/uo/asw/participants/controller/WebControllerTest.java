@@ -19,8 +19,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import uo.asw.Application;
-import uo.asw.dbManagement.AgentDAO;
-import uo.asw.dbManagement.model.Agent;
+import uo.asw.dbmanagement.model.Agent;
+import uo.asw.dbmanagement.AgentDAO;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)

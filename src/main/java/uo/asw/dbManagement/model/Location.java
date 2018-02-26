@@ -1,4 +1,4 @@
-package uo.asw.dbManagement.model;
+package uo.asw.dbmanagement.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,24 +11,24 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "location")
 public class Location {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@NotNull
 	private double latitud;
-	
+
 	@NotNull
 	private double longitud;
-	
+
 	@OneToOne
 	private Agent agent;
-	
+
 	Location() {
 	}
-	
-	public Location (double latitud, double longitud) {
+
+	public Location(double latitud, double longitud) {
 		super();
 		this.latitud = latitud;
 		this.longitud = longitud;
@@ -36,6 +36,10 @@ public class Location {
 
 	public double getLatitud() {
 		return latitud;
+	}
+
+	public Long getId() {
+		return id;
 	}
 
 	public void setLatitud(double latitud) {
@@ -77,9 +81,8 @@ public class Location {
 				return false;
 		} else if (!agent.equals(other.agent))
 			return false;
-		if (Double.doubleToLongBits(latitud) != Double.doubleToLongBits(other.latitud))
-			return false;
-		if (Double.doubleToLongBits(longitud) != Double.doubleToLongBits(other.longitud))
+		if (Double.doubleToLongBits(latitud) != Double.doubleToLongBits(other.latitud)
+				|| (Double.doubleToLongBits(longitud) != Double.doubleToLongBits(other.longitud)))
 			return false;
 		return true;
 	}

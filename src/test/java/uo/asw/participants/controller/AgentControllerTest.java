@@ -16,8 +16,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import uo.asw.Application;
-import uo.asw.dbManagement.AgentDAO;
-import uo.asw.dbManagement.model.Agent;
+import uo.asw.dbmanagement.model.Agent;
+import uo.asw.dbmanagement.AgentDAO;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -42,6 +42,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  */
 public class AgentControllerTest {
 
+	private MediaType JSONContentType = new MediaType(MediaType.APPLICATION_JSON.getType(),
+			MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));
+
+	@Autowired
+	private AgentDAO citizenDAO;
+
 	private MockMvc mockMvc;
 	@SuppressWarnings("rawtypes")
 	private HttpMessageConverter mappingJackson2HttpMessageConverter;
@@ -49,19 +55,13 @@ public class AgentControllerTest {
 	private WebApplicationContext webApplicationContext;
 
 	@Autowired
-	void setConverters(HttpMessageConverter<?>[] converters) {
+	private void setConverters(HttpMessageConverter<?>[] converters) {
 
 		this.mappingJackson2HttpMessageConverter = Arrays.asList(converters).stream()
 				.filter(hmc -> hmc instanceof MappingJackson2HttpMessageConverter).findAny().orElse(null);
 
 		assertNotNull("the JSON message converter must not be null", this.mappingJackson2HttpMessageConverter);
 	}
-
-	private MediaType JSONContentType = new MediaType(MediaType.APPLICATION_JSON.getType(),
-			MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));
-
-	@Autowired
-	private AgentDAO citizenDAO;
 
 	@Before
 	public void setUp() throws Exception {
@@ -71,20 +71,13 @@ public class AgentControllerTest {
 	@Test
 	// Comprueba que el usuario se obtiene correctamente en formato JSON
 	public void getUserJSON() throws Exception {
-		Map<String, String> payload = new HashMap<String, String>() {
-			private static final long serialVersionUID = 1L;
-
-			{
-				put("login", "juan");
-				put("password", "1234");
-				put("kind", "Person");
-			}
-		};
-
+		Map<String, String> payload = new HashMap<String, String>();
+		payload.put("login", "juan");
+		payload.put("password", "1234");
+		payload.put("kind", "Person");
 		Agent c = citizenDAO.getAgent("juan", "1234", "Person");
 		mockMvc.perform(post("/info").content(this.json(payload)).contentType(JSONContentType))
 				.andExpect(status().isOk()).andExpect(jsonPath("$['email']", is(c.getEmail()))
-
 		);
 	}
 
