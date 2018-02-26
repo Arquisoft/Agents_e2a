@@ -27,6 +27,7 @@ import java.util.Map;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -70,51 +71,70 @@ public class AgentControllerTest {
 
 	@Test
 	// Comprueba que el usuario se obtiene correctamente en formato JSON
-	public void getUserJSON() throws Exception {
+	public void getUserJSON() {
 		Map<String, String> payload = new HashMap<String, String>();
 		payload.put("login", "juan");
 		payload.put("password", "1234");
 		payload.put("kind", "Person");
 		Agent c = citizenDAO.getAgent("juan", "1234", "Person");
-		mockMvc.perform(post("/info").content(this.json(payload)).contentType(JSONContentType))
-				.andExpect(status().isOk()).andExpect(jsonPath("$['email']", is(c.getEmail()))
-		);
+		try {
+			mockMvc.perform(post("/info").content(this.json(payload)).contentType(JSONContentType))
+					.andExpect(status().isOk()).andExpect(jsonPath("$['email']", is(c.getEmail())));
+		} catch (Exception e) {
+			fail("Los test no se han ejecutado correctamente");
+			e.printStackTrace();
+		}
 	}
 
 	@Test
 	// Usuario con login no registrado
-	public void testNotFoundLogin() throws Exception {
+	public void testNotFoundLogin() {
 		Map<String, String> payload = new HashMap<String, String>();
 		payload.put("login", "juanJUANjuan");
 		payload.put("password", "1234");
 		payload.put("kind", "Person");
 
-		mockMvc.perform(post("/info").content(new byte[0]) // Contenido vacio
-				.content(this.json(payload)).contentType(JSONContentType)).andExpect(status().isNotFound());
+		try {
+			mockMvc.perform(post("/info").content(new byte[0]) // Contenido vacio
+					.content(this.json(payload)).contentType(JSONContentType)).andExpect(status().isNotFound());
+		} catch (Exception e) {
+			fail("Los test no se han ejecutado correctamente");
+			e.printStackTrace();
+		}
 	}
 
 	@Test
 	// Usuario con password incorrecta
-	public void testNotFoundPassword() throws Exception {
+	public void testNotFoundPassword() {
 		Map<String, String> payload = new HashMap<String, String>();
 		payload.put("login", "juan");
 		payload.put("password", "1234abcde");
 		payload.put("kind", "Person");
 
-		mockMvc.perform(post("/info").content(new byte[0]) // Contenido vacio
-				.content(this.json(payload)).contentType(JSONContentType)).andExpect(status().isNotFound());
+		try {
+			mockMvc.perform(post("/info").content(new byte[0]) // Contenido vacio
+					.content(this.json(payload)).contentType(JSONContentType)).andExpect(status().isNotFound());
+		} catch (Exception e) {
+			fail("Los test no se han ejecutado correctamente");
+			e.printStackTrace();
+		}
 	}
 
 	@Test
 	// Usuario con password y login incorrecto
-	public void testNotFoundPasswordAndLogin() throws Exception {
+	public void testNotFoundPasswordAndLogin() {
 		Map<String, String> payload = new HashMap<String, String>();
 		payload.put("login", "juanJUANjuan");
 		payload.put("password", "1234abcde");
 		payload.put("kind", "Person");
 
-		mockMvc.perform(post("/info").content(new byte[0]) // Contenido vacio
-				.content(this.json(payload)).contentType(JSONContentType)).andExpect(status().isNotFound());
+		try {
+			mockMvc.perform(post("/info").content(new byte[0]) // Contenido vacio
+					.content(this.json(payload)).contentType(JSONContentType)).andExpect(status().isNotFound());
+		} catch (Exception e) {
+			fail("Los test no se han ejecutado correctamente");
+			e.printStackTrace();
+		}
 	}
 
 	/**

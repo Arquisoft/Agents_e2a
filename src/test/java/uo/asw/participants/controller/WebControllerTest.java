@@ -1,6 +1,7 @@
 package uo.asw.participants.controller;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
@@ -22,143 +23,145 @@ import uo.asw.Application;
 import uo.asw.dbmanagement.model.Agent;
 import uo.asw.dbmanagement.AgentDAO;
 
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = Application.class)
 @WebAppConfiguration
 public class WebControllerTest {
 
-    @Autowired
-    private WebApplicationContext wac;
- 
-    private MockMvc mockMvc;
-    
-    @Autowired
-    private AgentDAO citizenDAO;
-     
-    @Before
-    public void init() {
-        mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
-    }
-    
-    @Test
-	 //usuario y contraseña correctos
-    public void showInfoTest1() throws Exception {
+	@Autowired
+	private WebApplicationContext wac;
 
-      mockMvc.perform(post("/info")
-		.param("login", "juan")
-		.param("password", "1234")
-		.param("kind", "Person"))
-      	.andExpect(status().isOk())
-      	.andExpect(model().attributeExists("resultado"))
-      	.andExpect(view().name("view"));
-    	
-    }
+	private MockMvc mockMvc;
 
-    
-    @Test
-    //usuario incorrecto
-    public void showInfoTest2() throws Exception {
-    	
-        mockMvc.perform(post("/info")
-    	.param("login", "usuario")
-		.param("password", "1234")
-		.param("kind", "Person"))
-     	.andExpect(view().name("error"));
+	@Autowired
+	private AgentDAO citizenDAO;
 
-    }
-    
-    @Test
-    //contraseña incorrecta
-    public void showInfoTest3() throws Exception {
+	@Before
+	public void init() {
+		mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
+	}
 
-       	mockMvc.perform(post("/info")
-    	.param("login", "juan")
-		.param("password", "password")
-		.param("kind", "Person"))
-     	.andExpect(view().name("error"));
-   
-    }
-    
-    @Test
-    //usuario y contraseña vacios
-    public void showInfoTest4() throws Exception {
+	@Test
+	// usuario y contraseña correctos
+	public void showInfoTest1() {
 
-       	mockMvc.perform(post("/info")
-    	.param("login", "")
-		.param("password", "")
-		.param("kind", "Person"))
-        .andExpect(view().name("error"));
-   
-    }
-    
-   @Test
-   public void showViewTest() throws Exception {
-       mockMvc.perform(get("/"))
-           .andExpect(status().isOk())
-           .andExpect(view().name("log"));
-   }
-    
-   
-   @Test
-   public void changePasswordTest1() throws Exception {
-   	
-	   Agent c = citizenDAO.getAgent("juan", "1234", "Person");
+		try {
+			mockMvc.perform(post("/info").param("login", "juan").param("password", "1234").param("kind", "Person"))
+					.andExpect(status().isOk()).andExpect(model().attributeExists("resultado"))
+					.andExpect(view().name("view"));
+		} catch (Exception e) {
+			fail("Los test no se han ejecutado correctamente");
+			e.printStackTrace();
+		}
 
-	   //Cambio de contraseña
-       mockMvc.perform(post("/changeInfo")
-    	.param("password", "1234")
-		.param("newPassword", "new")
-		.sessionAttr("agent", c))
-        .andExpect(status().isOk())
-    	.andExpect(view().name("view"));
+	}
 
-	   //Cambio de contraseña de nuevo por la original
-       mockMvc.perform(post("/changeInfo")
-    	.param("password", "new")
-		.param("newPassword", "1234")
-		.sessionAttr("agent", c))
-        .andExpect(status().isOk())
-     	.andExpect(view().name("view"));
-       
-   }
-   
-   @Test
-   //Contraseña incorrecta
-   public void changePasswordTest2() throws Exception {
-   	
-	   Agent c = citizenDAO.getAgent("juan", "1234", "Person");
+	@Test
+	// usuario incorrecto
+	public void showInfoTest2() {
 
-       mockMvc.perform(post("/changeInfo")
-    	.param("password", "password")
-		.param("newPassword", "new")
-		.sessionAttr("agent", c))
-    	.andExpect(view().name("errorContrasena"));
-       
-   }
-   
-   @Test
-   public void changeEmailTest1() throws Exception {
-   	
-	   Agent c = citizenDAO.getAgent("juan", "1234", "Person");
+		try {
+			mockMvc.perform(post("/info").param("login", "usuario").param("password", "1234").param("kind", "Person"))
+					.andExpect(view().name("error"));
+		} catch (Exception e) {
+			fail("Los test no se han ejecutado correctamente");
+			e.printStackTrace();
+		}
 
-	   //Cambio de email
-       mockMvc.perform(post("/changeEmail")
-    	.param("email", "juanNuevo@gmail.com")
-		.sessionAttr("agent", c))
-        .andExpect(status().isOk())
-    	.andExpect(view().name("view"));
+	}
 
-       assertEquals("juanNuevo@gmail.com", c.getEmail());
-       
-	   //Cambio de email de nuevo por el original
-       mockMvc.perform(post("/changeEmail")
-    	.param("email", "juan@gmail.com")
-		.sessionAttr("agent", c))
-        .andExpect(status().isOk())
-     	.andExpect(view().name("view"));
-       
-       assertEquals("juan@gmail.com", c.getEmail());
+	@Test
+	// contraseña incorrecta
+	public void showInfoTest3() {
 
-   }
+		try {
+			mockMvc.perform(post("/info").param("login", "juan").param("password", "password").param("kind", "Person"))
+					.andExpect(view().name("error"));
+		} catch (Exception e) {
+			fail("Los test no se han ejecutado correctamente");
+			e.printStackTrace();
+		}
+
+	}
+
+	@Test
+	// usuario y contraseña vacios
+	public void showInfoTest4() {
+
+		try {
+			mockMvc.perform(post("/info").param("login", "").param("password", "").param("kind", "Person"))
+					.andExpect(view().name("error"));
+		} catch (Exception e) {
+			fail("Los test no se han ejecutado correctamente");
+			e.printStackTrace();
+		}
+
+	}
+
+	@Test
+	public void showViewTest() {
+		try {
+			mockMvc.perform(get("/")).andExpect(status().isOk()).andExpect(view().name("log"));
+		} catch (Exception e) {
+			fail("Los test no se han ejecutado correctamente");
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	public void changePasswordTest1() {
+
+		Agent c = citizenDAO.getAgent("juan", "1234", "Person");
+
+		// Cambio de contraseña
+		try {
+			mockMvc.perform(
+					post("/changeInfo").param("password", "1234").param("newPassword", "new").sessionAttr("agent", c))
+					.andExpect(status().isOk()).andExpect(view().name("view"));
+			getClass();
+
+			// Cambio de contraseña de nuevo por la original
+			mockMvc.perform(
+					post("/changeInfo").param("password", "new").param("newPassword", "1234").sessionAttr("agent", c))
+					.andExpect(status().isOk()).andExpect(view().name("view"));
+		} catch (Exception e) {
+			fail("Los test no se han ejecutado correctamente");
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	// Contraseña incorrecta
+	public void changePasswordTest2() {
+
+		Agent c = citizenDAO.getAgent("juan", "1234", "Person");
+
+		try {
+			mockMvc.perform(post("/changeInfo").param("password", "password").param("newPassword", "new")
+					.sessionAttr("agent", c)).andExpect(view().name("errorContrasena"));
+		} catch (Exception e) {
+			fail("Los test no se han ejecutado correctamente");
+			e.printStackTrace();
+		}
+
+	}
+
+	@Test
+	public void changeEmailTest1() throws Exception {
+
+		Agent c = citizenDAO.getAgent("juan", "1234", "Person");
+
+		// Cambio de email
+		mockMvc.perform(post("/changeEmail").param("email", "juanNuevo@gmail.com").sessionAttr("agent", c))
+				.andExpect(status().isOk()).andExpect(view().name("view"));
+
+		assertEquals("juanNuevo@gmail.com", c.getEmail());
+
+		// Cambio de email de nuevo por el original
+		mockMvc.perform(post("/changeEmail").param("email", "juan@gmail.com").sessionAttr("agent", c))
+				.andExpect(status().isOk()).andExpect(view().name("view"));
+
+		assertEquals("juan@gmail.com", c.getEmail());
+
+	}
 }
