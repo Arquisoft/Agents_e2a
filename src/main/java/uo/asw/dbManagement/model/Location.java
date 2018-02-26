@@ -81,10 +81,8 @@ public class Location {
 				return false;
 		} else if (!agent.equals(other.agent))
 			return false;
-		if (Double.doubleToLongBits(latitud) != Double.doubleToLongBits(other.latitud)
-				|| (Double.doubleToLongBits(longitud) != Double.doubleToLongBits(other.longitud)))
-			return false;
-		return true;
+		return !(Double.doubleToLongBits(latitud) != Double.doubleToLongBits(other.latitud)
+				|| (Double.doubleToLongBits(longitud) != Double.doubleToLongBits(other.longitud)));
 	}
 
 	@Override

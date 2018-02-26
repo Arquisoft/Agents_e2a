@@ -55,7 +55,7 @@ public class AgentControllerTest {
 	private WebApplicationContext webApplicationContext;
 
 	@Autowired
-	private void setConverters(HttpMessageConverter<?>[] converters) {
+	public void setConverters(HttpMessageConverter<?>[] converters) {
 
 		this.mappingJackson2HttpMessageConverter = Arrays.asList(converters).stream()
 				.filter(hmc -> hmc instanceof MappingJackson2HttpMessageConverter).findAny().orElse(null);
@@ -84,15 +84,10 @@ public class AgentControllerTest {
 	@Test
 	// Usuario con login no registrado
 	public void testNotFoundLogin() throws Exception {
-		Map<String, String> payload = new HashMap<String, String>() {
-			private static final long serialVersionUID = 1L;
-
-			{
-				put("login", "juanJUANjuan");
-				put("password", "1234");
-				put("kind", "Person");
-			}
-		};
+		Map<String, String> payload = new HashMap<String, String>();
+		payload.put("login", "juanJUANjuan");
+		payload.put("password", "1234");
+		payload.put("kind", "Person");
 
 		mockMvc.perform(post("/info").content(new byte[0]) // Contenido vacio
 				.content(this.json(payload)).contentType(JSONContentType)).andExpect(status().isNotFound());
@@ -101,15 +96,10 @@ public class AgentControllerTest {
 	@Test
 	// Usuario con password incorrecta
 	public void testNotFoundPassword() throws Exception {
-		Map<String, String> payload = new HashMap<String, String>() {
-			private static final long serialVersionUID = 1L;
-
-			{
-				put("login", "juan");
-				put("password", "1234abcde");
-				put("kind", "Person");
-			}
-		};
+		Map<String, String> payload = new HashMap<String, String>();
+		payload.put("login", "juan");
+		payload.put("password", "1234abcde");
+		payload.put("kind", "Person");
 
 		mockMvc.perform(post("/info").content(new byte[0]) // Contenido vacio
 				.content(this.json(payload)).contentType(JSONContentType)).andExpect(status().isNotFound());
@@ -118,14 +108,10 @@ public class AgentControllerTest {
 	@Test
 	// Usuario con password y login incorrecto
 	public void testNotFoundPasswordAndLogin() throws Exception {
-		Map<String, String> payload = new HashMap<String, String>() {
-			private static final long serialVersionUID = 1L;
-
-			{
-				put("login", "juanJUANjuan");
-				put("password", "1234abcde");
-			}
-		};
+		Map<String, String> payload = new HashMap<String, String>();
+		payload.put("login", "juanJUANjuan");
+		payload.put("password", "1234abcde");
+		payload.put("kind", "Person");
 
 		mockMvc.perform(post("/info").content(new byte[0]) // Contenido vacio
 				.content(this.json(payload)).contentType(JSONContentType)).andExpect(status().isNotFound());
