@@ -1,6 +1,6 @@
-package uo.asw.dbmanagement;
+package uo.asw.dbManagement;
 
-import uo.asw.dbmanagement.model.Agent;
+import uo.asw.dbManagement.model.Agent;
 
 /**
  * @since 0.0.1

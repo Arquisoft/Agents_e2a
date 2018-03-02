@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import uo.asw.agents.ChangeInfo;
+import uo.asw.agents.GetAgent;
 import uo.asw.agents.util.Check;
 import uo.asw.dbManagement.model.Agent;
 import uo.asw.dbManagement.AgentDAO;
@@ -30,6 +32,9 @@ public class WebController {
 	@Autowired
 	private AgentDAO cc;
 
+	@Autowired
+	private ChangeInfo changeInfo;
+	
 	/**
 	 * Recibe los datos de login del usuario, busca si exite ese usuario y en caso
 	 * de exitir pasa a la siguiente página que muestra la informacion en caso
@@ -94,6 +99,7 @@ public class WebController {
 				c.setContraseña(newPassword);
 				cc.updateInfo(c);
 				model.addAttribute("resultado", "Contrasena actualizada correctamente");
+				changeInfo.changeInfo(c);
 				return "view";
 			}
 			return "errorContrasena";

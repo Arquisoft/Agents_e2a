@@ -1,9 +1,9 @@
-package uo.asw.dbmanagement.impl;
+package uo.asw.dbManagement.impl;
 
 import org.springframework.stereotype.Repository;
 
-import uo.asw.dbmanagement.AgentDAO;
-import uo.asw.dbmanagement.model.Agent;
+import uo.asw.dbManagement.AgentDAO;
+import uo.asw.dbManagement.model.Agent;
 
 import java.util.List;
 

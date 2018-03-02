@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import uo.asw.agents.AgentsService;
+import uo.asw.agents.GetAgent;
 import uo.asw.agents.controller.AgentController;
 import uo.asw.agents.util.AgentMin;
 
@@ -19,7 +19,7 @@ import java.util.Map;
 public class AgentControllerImpl implements AgentController {
 
 	@Autowired
-	private AgentsService agentsService;
+	private GetAgent getAgent;
 
 	@Override
 	@RequestMapping(value = "/info", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = {
@@ -28,7 +28,7 @@ public class AgentControllerImpl implements AgentController {
 		String login = (String) payload.get("login");
 		String password = (String) payload.get("password");
 		String kind = (String) payload.get("kind");
-		AgentMin c = agentsService.getAgentsInfo(login, password, kind);
+		AgentMin c = getAgent.getAgentsInfo(login, password, kind);
 		if (c == null) {
 			return new ResponseEntity<AgentMin>(HttpStatus.NOT_FOUND);
 		}
