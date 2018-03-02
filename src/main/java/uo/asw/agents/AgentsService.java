@@ -1,7 +1,7 @@
 package uo.asw.agents;
 
 import uo.asw.agents.util.AgentMin;
-import uo.asw.dbmanagement.model.Agent;
+import uo.asw.dbManagement.model.Agent;
 
 /**
  * Servicio de agentes

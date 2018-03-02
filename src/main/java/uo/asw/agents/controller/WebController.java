@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import uo.asw.agents.util.Check;
-import uo.asw.dbmanagement.model.Agent;
-import uo.asw.dbmanagement.AgentDAO;
+import uo.asw.dbManagement.model.Agent;
+import uo.asw.dbManagement.AgentDAO;
 
 @Controller
 public class WebController {

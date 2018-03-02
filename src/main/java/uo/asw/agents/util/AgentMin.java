@@ -1,6 +1,6 @@
 package uo.asw.agents.util;
 
-import uo.asw.dbmanagement.model.Location;
+import uo.asw.dbManagement.model.Location;
 
 public class AgentMin {
 

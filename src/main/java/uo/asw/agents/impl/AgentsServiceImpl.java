@@ -5,8 +5,8 @@ import org.springframework.stereotype.Service;
 
 import uo.asw.agents.AgentsService;
 import uo.asw.agents.util.AgentMin;
-import uo.asw.dbmanagement.model.Agent;
-import uo.asw.dbmanagement.AgentDAO;
+import uo.asw.dbManagement.model.Agent;
+import uo.asw.dbManagement.AgentDAO;
 
 @Service
 public class AgentsServiceImpl implements AgentsService {
