@@ -19,4 +19,8 @@ public class AgentsService {
 	public void addAgent(Agent agent) {
 		agentsRepository.save(agent);
 	}
+	
+	public void eliminar(Agent agent) {
+		agentsRepository.delete(agent);
+	}
 }
