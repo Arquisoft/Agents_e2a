@@ -11,7 +11,7 @@ public class Agent implements AgentInterface{
 
 	@Id
 	@GeneratedValue
-	Long id;
+	private Long id;
 
 	@Column(unique = true)
 	@NotNull
