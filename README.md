@@ -30,11 +30,11 @@ https://github.com/Arquisoft/loader_e2a
 # Funcionamiento:
 ## Servicio REST
 ### Opción 1
-   Utilizamos la versión de Agents desplegada en la siguiente dirección: http://35.180.34.205:8070/info
+   - Utilizamos la versión de Agents desplegada en la siguiente dirección: http://35.180.34.205:8070/info
 
 ### Opción 2
-   Lanzamos la aplicación mediante el comando mvn spring-boot:run
-   El punto de entrada se encuentra en http://localhost:8070/info.
+   - Lanzamos la aplicación mediante el comando mvn spring-boot:run
+   - El punto de entrada se encuentra en http://localhost:8070/info.
    
    Acepta peticiones POST en formato JSON con el contenido:
    ``{"login":"login_usuario", "password":"contraseña_usuario", "kind":"tipo_usuario"}``
@@ -51,7 +51,7 @@ https://github.com/Arquisoft/loader_e2a
       "kindCode": "id_kind" (long),
       "dni": "dni",
       "nombre": "nombre",
-      "apellidos": "apellido",
+      "apellidos": "apellidos",
       "email": "email",
       "username": "nombre_usuario"
    }
