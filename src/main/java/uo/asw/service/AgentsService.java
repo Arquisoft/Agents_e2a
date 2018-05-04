@@ -13,7 +13,8 @@ public class AgentsService {
 	private AgentsRepository agentsRepository;
 
 	public Agent findAgent(String usuario, String password, String kind) {
-		return agentsRepository.findAgent(usuario, password, kind);
+		String pass = password + kind + usuario;
+		return agentsRepository.findAgent(usuario, String.valueOf(pass.hashCode()), kind);
 	}
 
 	public void addAgent(Agent agent) {
