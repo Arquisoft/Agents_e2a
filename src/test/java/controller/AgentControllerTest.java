@@ -35,4 +35,32 @@ public class AgentControllerTest {
 		assertEquals("Los parámetros no son correctos", e.getError());
 		assertEquals("406", e.getStatus());
 	}
+	
+	@Test
+	public void test2() {
+		AgentController c = new AgentController();
+		Map<String, Object> payload = new HashMap<String, Object>();
+		payload.put("login", "login");
+		payload.put("clave incorrecta", "password incorrecta");
+		payload.put("kind", "kind");
+		ResponseEntity<AgentInterface> r = c.showInfo(payload);
+		assertEquals(HttpStatus.BAD_REQUEST, r.getStatusCode());
+		AgentError e = (AgentError) r.getBody();
+		assertEquals("Los parámetros no son correctos", e.getError());
+		assertEquals("406", e.getStatus());
+	}
+	
+	@Test
+	public void test3() {
+		AgentController c = new AgentController();
+		Map<String, Object> payload = new HashMap<String, Object>();
+		payload.put("Clave incorrecta", "login incorrecto");
+		payload.put("password", "password");
+		payload.put("kind", "kind");
+		ResponseEntity<AgentInterface> r = c.showInfo(payload);
+		assertEquals(HttpStatus.BAD_REQUEST, r.getStatusCode());
+		AgentError e = (AgentError) r.getBody();
+		assertEquals("Los parámetros no son correctos", e.getError());
+		assertEquals("406", e.getStatus());
+	}
 }
