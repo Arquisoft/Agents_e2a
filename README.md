@@ -45,15 +45,15 @@ https://github.com/Arquisoft/loader_e2a
 ### Formato de retorn JSON
    ```json
    {
-      "id": id_usuario (long),
-      "password": password,
+      "id": "id_usuario" (long),
+      "password": "password",
       "kind": "tipo_usuario",
-      "kindCode": id_kind (long),
-      "dni": dni,
+      "kindCode": "id_kind" (long),
+      "dni": "dni",
       "nombre": "nombre",
       "apellidos": "apellido",
       "email": "email",
-      "username": nombre_usuario
+      "username": "nombre_usuario"
    }
    ```
 
