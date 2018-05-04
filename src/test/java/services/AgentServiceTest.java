@@ -18,7 +18,7 @@ import uo.asw.service.AgentsService;
 public class AgentServiceTest {
 	
 	@Autowired
-	AgentsService agentsService;
+	private AgentsService agentsService;
 
 	@Test
 	public void test() {
