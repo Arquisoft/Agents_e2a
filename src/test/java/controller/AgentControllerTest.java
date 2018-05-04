@@ -63,4 +63,60 @@ public class AgentControllerTest {
 		assertEquals("Los parámetros no son correctos", e.getError());
 		assertEquals("406", e.getStatus());
 	}
+	
+	@Test
+	public void test4() {
+		AgentController c = new AgentController();
+		Map<String, Object> payload = new HashMap<String, Object>();
+		payload.put("Clave incorrecta", "login incorrecto");
+		payload.put("Clave incorrecta 2", "password incorrecto");
+		payload.put("kind", "kind");
+		ResponseEntity<AgentInterface> r = c.showInfo(payload);
+		assertEquals(HttpStatus.BAD_REQUEST, r.getStatusCode());
+		AgentError e = (AgentError) r.getBody();
+		assertEquals("Los parámetros no son correctos", e.getError());
+		assertEquals("406", e.getStatus());
+	}
+	
+	@Test
+	public void test5() {
+		AgentController c = new AgentController();
+		Map<String, Object> payload = new HashMap<String, Object>();
+		payload.put("Clave incorrecta", "login incorrecto");
+		payload.put("password", "password");
+		payload.put("Clave incorrecta 2", "kind incorrecto");
+		ResponseEntity<AgentInterface> r = c.showInfo(payload);
+		assertEquals(HttpStatus.BAD_REQUEST, r.getStatusCode());
+		AgentError e = (AgentError) r.getBody();
+		assertEquals("Los parámetros no son correctos", e.getError());
+		assertEquals("406", e.getStatus());
+	}
+	
+	@Test
+	public void test6() {
+		AgentController c = new AgentController();
+		Map<String, Object> payload = new HashMap<String, Object>();
+		payload.put("login", "login");
+		payload.put("Clave incorrecta", "password incorrecto");
+		payload.put("Clave incorrecta 2", "kind incorrecto");
+		ResponseEntity<AgentInterface> r = c.showInfo(payload);
+		assertEquals(HttpStatus.BAD_REQUEST, r.getStatusCode());
+		AgentError e = (AgentError) r.getBody();
+		assertEquals("Los parámetros no son correctos", e.getError());
+		assertEquals("406", e.getStatus());
+	}
+	
+	@Test
+	public void test7() {
+		AgentController c = new AgentController();
+		Map<String, Object> payload = new HashMap<String, Object>();
+		payload.put("Clave incorrecta", "login incorrecto");
+		payload.put("Clave incorrecta", "password incorrecto");
+		payload.put("Clave incorrecta 3", "kind incorrecto");
+		ResponseEntity<AgentInterface> r = c.showInfo(payload);
+		assertEquals(HttpStatus.BAD_REQUEST, r.getStatusCode());
+		AgentError e = (AgentError) r.getBody();
+		assertEquals("Los parámetros no son correctos", e.getError());
+		assertEquals("406", e.getStatus());
+	}
 }
