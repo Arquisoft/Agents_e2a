@@ -28,38 +28,32 @@ https://github.com/Arquisoft/loader_e2a
 - José Antonio García García (@MrKarrter)
 
 # Funcionamiento:
-## Interfaz HTML
-1. Escribir en el navegador: http://localhost:8080/
-2. Proporcionar los datos de login para los usuarios disponibles:
- * Login: juan, pedro, raul
- * Password: 1234
- * Kind: Person, Entity, Sensor (Respectivamente)
-3. Aparecerá la pantalla que muestra los datos del usuario
- * Se puede modificar el email (se comprueba si el email es valido)
- * Se puede ir a la pantalla de cambio de contraseña
-4. Cambio de contraseña:
- * Escribir la contreseña antigua
- * Escribir la nueva contraseña
-
 ## Servicio REST
-   El punto de entrada se encuentra en http://localhost:8080/info.
+### Opción 1
+   Utilizamos la versión de Agents desplegada en la siguiente dirección: http://35.180.34.205:8070/info
+
+### Opción 2
+   Lanzamos la aplicación mediante el comando mvn spring-boot:run
+   El punto de entrada se encuentra en http://localhost:8070/info.
    
    Acepta peticiones POST en formato JSON con el contenido:
    ``{"login":"login_usuario", "password":"contraseña_usuario", "kind":"tipo_usuario"}``
    
-   Si los datos no son correctos se devuelve un error HTTP 404.
-   Si los parametros no son correctos se devuelve un codigo de error HTTP 406.
+   Si los datos no son correctos se devuelve un error HTTP NOT_FOUND.
+   Si los parametros no son correctos se devuelve un codigo de error HTTP BAD_REQUEST.
    
 ### Formato de retorn JSON
    ```json
    {
       "id": id_usuario (long),
-      "name": "nombre_usuario",
-      "surname": "apellido_usuario",
-      "email": "email",
+      "password": password,
       "kind": "tipo_usuario",
       "kindCode": id_kind (long),
-      "location": "localizacion_usuario" (Location)
+      "dni": dni,
+      "nombre": "nombre",
+      "apellidos": "apellido",
+      "email": "email",
+      "username": nombre_usuario
    }
    ```
 
