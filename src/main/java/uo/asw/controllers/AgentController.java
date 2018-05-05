@@ -79,7 +79,7 @@ public class AgentController {
 	public String changeInfo() {
 		return "changeInfo";
 	}
-	
+
 	/**
 	 * Cambia la contrasena de un usuario, siempre que e usuario este en sesion, la
 	 * contrasena antigua se igual que la contrasena de parametro y la nueva
@@ -95,14 +95,13 @@ public class AgentController {
 	 * @return pagina siguiente
 	 */
 	@RequestMapping(value = "/changeInfo", method = RequestMethod.POST)
-	public String changePassword(@RequestParam String password, @RequestParam String newPassword,
-			Model model) {
-		if (agente != null) {
-			if (agente.getPassword().equals(agentsService.encripta(agente.getUsername(), password, agente.getKind())) && !newPassword.isEmpty()) {
-				agente.setPassword(agentsService.encripta(agente.getUsername(), newPassword, agente.getKind()));
-				agentsService.addAgent(agente);
-				return "ok";
-			}
+	public String changePassword(@RequestParam String password, @RequestParam String newPassword, Model model) {
+		if (agente != null
+				&& agente.getPassword().equals(agentsService.encripta(agente.getUsername(), password, agente.getKind()))
+				&& !newPassword.isEmpty()) {
+			agente.setPassword(agentsService.encripta(agente.getUsername(), newPassword, agente.getKind()));
+			agentsService.addAgent(agente);
+			return "ok";
 		}
 		return "error";
 	}
