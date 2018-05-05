@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import uo.asw.Application;
 import uo.asw.controllers.AgentController;
+import uo.asw.entities.Agent;
 import uo.asw.entities.AgentError;
 import uo.asw.entities.AgentInterface;
 
@@ -118,5 +119,34 @@ public class AgentControllerTest {
 		AgentError e = (AgentError) r.getBody();
 		assertEquals("Los parámetros no son correctos", e.getError());
 		assertEquals("406", e.getStatus());
+	}
+	
+	@Test
+	public void test8() throws Exception {
+		AgentController c = new AgentController();
+		c.setAgente(null);
+		assertEquals("log", c.showView(null));
+		assertNull(c.getAgente());
+		c.setAgente(new Agent());
+		assertEquals("view", c.showView(null));
+	}
+	
+	@Test
+	public void test9() {
+		AgentController c = new AgentController();
+		assertEquals("log", c.showView());
+	}
+	
+	@Test
+	public void test10() {
+		AgentController c = new AgentController();
+		assertEquals("changeInfo", c.changeInfo());
+	}
+	
+	@Test
+	public void test11() {
+		AgentController c = new AgentController();
+		c.setAgente(null);
+		assertEquals("error", c.changePassword("", "", null));
 	}
 }

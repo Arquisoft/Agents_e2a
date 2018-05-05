@@ -105,4 +105,12 @@ public class AgentController {
 		}
 		return "error";
 	}
+
+	public Agent getAgente() {
+		return agente;
+	}
+
+	public void setAgente(Agent agente) {
+		this.agente = agente;
+	}
 }
