@@ -1,36 +1,39 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1" />
-<title>Change participant info</title>
-</head>
+<head th:replace="fragments/head" />
 <body>
-	<h1>
-		Cambiar la contrasena del usuario <span
-			th:text="${session.agent.nombre}" />
-	</h1>
+	<div class="bg-primary">
+		<center>
+			<h1>
+				Cambiar la contraseña del usuario <span
+					th:text="${session.agent.nombre}" />
+			</h1>
+		</center>
+	</div>
+
 	<form method="POST" action="changeInfo">
 		<table>
 			<tr>
-				<td>Contrasena:</td>
+				<td>Contraseña:</td>
 				<td><input type="password" name="password" required="required"
-					placeholder="Contrasena" /></td>
+					placeholder="Contraseña" /></td>
 			</tr>
 			<tr>
-				<td>Nueva contrasena:</td>
+				<td>Nueva contraseña:</td>
 				<td><input type="password" name="newPassword"
-					required="required" placeholder="Nueva contrasena" /></td>
+					required="required" placeholder="Nueva contraseña" /></td>
 			</tr>
 			<tr>
 				<td><input type="submit" name="updateInfo"
-					value="Actualizar contrasena" /></td>
+					value="Actualizar contraseña" /></td>
 				<td><input id="btnReset" type="reset" value="Reset" /></td>
 			</tr>
 			<tr>
-				<td><a href="/">Volver a inicio</a></td>
+				<td><a href="/">Volver al perfil</a></td>
 
 			</tr>
 		</table>
 	</form>
+	<footer th:replace="fragments/footer" />
 </body>
 </html>

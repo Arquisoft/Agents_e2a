@@ -30,7 +30,7 @@ public class AgentControllerTest {
 		payload.put("password", "password");
 		payload.put("Clave incorrecta", "kind incorrecto");
 		ResponseEntity<AgentInterface> r = c.showInfo(payload);
-		assertEquals(HttpStatus.BAD_REQUEST, r.getStatusCode());
+		assertEquals(HttpStatus.NOT_ACCEPTABLE, r.getStatusCode());
 		AgentError e = (AgentError) r.getBody();
 		assertEquals("Los parámetros no son correctos", e.getError());
 		assertEquals("406", e.getStatus());
@@ -44,7 +44,7 @@ public class AgentControllerTest {
 		payload.put("clave incorrecta", "password incorrecta");
 		payload.put("kind", "kind");
 		ResponseEntity<AgentInterface> r = c.showInfo(payload);
-		assertEquals(HttpStatus.BAD_REQUEST, r.getStatusCode());
+		assertEquals(HttpStatus.NOT_ACCEPTABLE, r.getStatusCode());
 		AgentError e = (AgentError) r.getBody();
 		assertEquals("Los parámetros no son correctos", e.getError());
 		assertEquals("406", e.getStatus());
@@ -58,7 +58,7 @@ public class AgentControllerTest {
 		payload.put("password", "password");
 		payload.put("kind", "kind");
 		ResponseEntity<AgentInterface> r = c.showInfo(payload);
-		assertEquals(HttpStatus.BAD_REQUEST, r.getStatusCode());
+		assertEquals(HttpStatus.NOT_ACCEPTABLE, r.getStatusCode());
 		AgentError e = (AgentError) r.getBody();
 		assertEquals("Los parámetros no son correctos", e.getError());
 		assertEquals("406", e.getStatus());
@@ -72,7 +72,7 @@ public class AgentControllerTest {
 		payload.put("Clave incorrecta 2", "password incorrecto");
 		payload.put("kind", "kind");
 		ResponseEntity<AgentInterface> r = c.showInfo(payload);
-		assertEquals(HttpStatus.BAD_REQUEST, r.getStatusCode());
+		assertEquals(HttpStatus.NOT_ACCEPTABLE, r.getStatusCode());
 		AgentError e = (AgentError) r.getBody();
 		assertEquals("Los parámetros no son correctos", e.getError());
 		assertEquals("406", e.getStatus());
@@ -86,7 +86,7 @@ public class AgentControllerTest {
 		payload.put("password", "password");
 		payload.put("Clave incorrecta 2", "kind incorrecto");
 		ResponseEntity<AgentInterface> r = c.showInfo(payload);
-		assertEquals(HttpStatus.BAD_REQUEST, r.getStatusCode());
+		assertEquals(HttpStatus.NOT_ACCEPTABLE, r.getStatusCode());
 		AgentError e = (AgentError) r.getBody();
 		assertEquals("Los parámetros no son correctos", e.getError());
 		assertEquals("406", e.getStatus());
@@ -100,7 +100,7 @@ public class AgentControllerTest {
 		payload.put("Clave incorrecta", "password incorrecto");
 		payload.put("Clave incorrecta 2", "kind incorrecto");
 		ResponseEntity<AgentInterface> r = c.showInfo(payload);
-		assertEquals(HttpStatus.BAD_REQUEST, r.getStatusCode());
+		assertEquals(HttpStatus.NOT_ACCEPTABLE, r.getStatusCode());
 		AgentError e = (AgentError) r.getBody();
 		assertEquals("Los parámetros no son correctos", e.getError());
 		assertEquals("406", e.getStatus());
@@ -114,7 +114,7 @@ public class AgentControllerTest {
 		payload.put("Clave incorrecta", "password incorrecto");
 		payload.put("Clave incorrecta 3", "kind incorrecto");
 		ResponseEntity<AgentInterface> r = c.showInfo(payload);
-		assertEquals(HttpStatus.BAD_REQUEST, r.getStatusCode());
+		assertEquals(HttpStatus.NOT_ACCEPTABLE, r.getStatusCode());
 		AgentError e = (AgentError) r.getBody();
 		assertEquals("Los parámetros no son correctos", e.getError());
 		assertEquals("406", e.getStatus());
