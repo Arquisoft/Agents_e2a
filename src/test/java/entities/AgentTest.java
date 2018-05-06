@@ -3,7 +3,7 @@ package entities;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import uo.asw.entities.Agent;
+import uo.asw.agents.entities.Agent;
 
 
 public class AgentTest {

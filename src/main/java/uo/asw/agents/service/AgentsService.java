@@ -1,10 +1,10 @@
-package uo.asw.service;
+package uo.asw.agents.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import uo.asw.entities.Agent;
-import uo.asw.repositories.AgentsRepository;
+import uo.asw.agents.entities.Agent;
+import uo.asw.repository.AgentsRepository;
 
 @Service
 public class AgentsService {

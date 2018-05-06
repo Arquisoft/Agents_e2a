@@ -13,10 +13,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import uo.asw.Application;
-import uo.asw.controllers.AgentController;
-import uo.asw.entities.Agent;
-import uo.asw.entities.AgentError;
-import uo.asw.entities.AgentInterface;
+import uo.asw.agents.controller.AgentController;
+import uo.asw.agents.entities.Agent;
+import uo.asw.agents.entities.AgentError;
+import uo.asw.agents.entities.AgentInterface;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)

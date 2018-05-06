@@ -9,8 +9,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import uo.asw.Application;
-import uo.asw.entities.Agent;
-import uo.asw.service.AgentsService;
+import uo.asw.agents.entities.Agent;
+import uo.asw.agents.service.AgentsService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = Application.class)

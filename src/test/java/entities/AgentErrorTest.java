@@ -3,7 +3,7 @@ package entities;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import uo.asw.entities.AgentError;
+import uo.asw.agents.entities.AgentError;
 
 public class AgentErrorTest {
 
