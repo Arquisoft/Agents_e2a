@@ -12,7 +12,7 @@ public class ChangeInfoService extends AbstractService {
 	@Autowired
 	private AgentsRepository agentsRepository;
 
-	public void addAgent(Agent agent) {
+	public void updateAgent(Agent agent) {
 		agentsRepository.save(agent);
 	}
 

@@ -47,7 +47,7 @@ public class ChangeInfoController extends AbstractController {
 				&& !newPassword.isEmpty()) {
 			getAgente().setPassword(
 					changeInfoService.encripta(getAgente().getUsername(), newPassword, getAgente().getKind()));
-			changeInfoService.addAgent(getAgente());
+			changeInfoService.updateAgent(getAgente());
 			return "ok";
 		}
 		return "error";

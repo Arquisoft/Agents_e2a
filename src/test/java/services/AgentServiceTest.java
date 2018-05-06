@@ -47,7 +47,7 @@ public class AgentServiceTest {
 		agent.setApellidos(apellidos);
 		agent.setEmail(email);
 
-		changeInfoService.addAgent(agent);
+		changeInfoService.updateAgent(agent);
 		Agent a = agentsService.findAgent(nombreUsuario, password, kind);
 		assertNotNull(a);
 		assertTrue(agent.getDni().equals(a.getDni()));
