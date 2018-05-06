@@ -11,6 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import uo.asw.Application;
 import uo.asw.agents.entities.Agent;
 import uo.asw.agents.service.AgentsService;
+import uo.asw.agents.service.ChangeInfoService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = Application.class)
@@ -18,6 +19,9 @@ public class AgentServiceTest {
 
 	@Autowired
 	private AgentsService agentsService;
+
+	@Autowired
+	private ChangeInfoService changeInfoService;
 
 	@Test
 	public void test() {
@@ -43,13 +47,11 @@ public class AgentServiceTest {
 		agent.setApellidos(apellidos);
 		agent.setEmail(email);
 
-		agentsService.addAgent(agent);
+		changeInfoService.addAgent(agent);
 		Agent a = agentsService.findAgent(nombreUsuario, password, kind);
 		assertNotNull(a);
 		assertTrue(agent.getDni().equals(a.getDni()));
-		agentsService.eliminar(agent);
+		changeInfoService.eliminar(agent);
 		assertNull(agentsService.findAgent(nombreUsuario, password, kind));
-
 	}
-
 }

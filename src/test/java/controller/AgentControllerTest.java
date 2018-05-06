@@ -136,17 +136,4 @@ public class AgentControllerTest {
 		AgentController c = new AgentController();
 		assertEquals("log", c.showView());
 	}
-	
-	@Test
-	public void test10() {
-		AgentController c = new AgentController();
-		assertEquals("changeInfo", c.changeInfo());
-	}
-	
-	@Test
-	public void test11() {
-		AgentController c = new AgentController();
-		c.setAgente(null);
-		assertEquals("error", c.changePassword("", "", null));
-	}
 }
