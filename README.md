@@ -117,4 +117,4 @@ Una vez rellenados todos los campos enviamos la petición. La aplicación nos pu
 ![funcionamiento](https://github.com/Arquisoft/inci_e2a/blob/master/readme_imagenes/Funcionamiento_Agents_5.png)
 
 4.	Código de Estado: 400 BAD_REQUEST. Si el formato de la petición es incorrecto se devolverá este código de error.
-![funcionamiento](https://github.com/Arquisoft/inci_e2a/blob/master/readme_imagenes/Funcionamiento_Agents_6.png
+![funcionamiento](https://github.com/Arquisoft/inci_e2a/blob/master/readme_imagenes/Funcionamiento_Agents_6.png)
